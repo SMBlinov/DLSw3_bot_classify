@@ -9,3 +9,6 @@ Guide.ipynb
 **/LEGO brick images
 **/.idea
 **/.ipynb_checkpoints
+
+dataset
+dataset/**
