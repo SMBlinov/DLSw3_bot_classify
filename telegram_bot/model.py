@@ -13,7 +13,7 @@ from fastai.vision import load_learner, Image
 class ClassPredictor:
 	def __init__(self):
 		self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-		self.model = load_learner('../model/','export.pkl')
+		self.model = load_learner('../model/','densenet161.pkl')
 		self.to_tensor = transforms.ToTensor()
 
 	def predict(self, img_stream):
@@ -21,7 +21,7 @@ class ClassPredictor:
 
 	def process_image(self, img_stream):
 		# используем PIL, чтобы получить картинку из потока и изменить размер
-		image = PIL_Image.open(img_stream).resize((299, 299))
+		image = PIL_Image.open(img_stream).resize((300, 300))
 		# переводим картинку в тензор и оборачиваем в объект Image, который использует fastai у себя внутри
 		image = Image(self.to_tensor(image))
 		return image
